@@ -1,0 +1,17 @@
+﻿@model RoleViewModel
+
+
+<form asp-action="Delete" enctype="multipart/form-data">
+
+	<div>
+
+		<partial name="Partial/_DeleteAndDetailsUsers" />
+		<center>
+			<button  class="btn btn-danger" type="submit"> Delete</button>
+			<a asp-action="Index" class="btn btn-success mx-2"> Home Page</a>
+
+		</center>
+
+	</div>
+
+</form>

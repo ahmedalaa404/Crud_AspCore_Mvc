@@ -1,0 +1,73 @@
+﻿
+
+@model EmployeeVm
+@inject IUniteOFWork Unite;
+
+@{
+
+	var Department =await Unite.DepartmentsRepo.GetAll();
+	SelectList Departments = new SelectList(Department,"id","Name");
+}
+
+<div class="my-4"> 
+
+	<div class="form-group">
+		<label asp-for="name"></label>
+		<input class="form-control" asp-for="name" />
+		<span class="text-danger" asp-validation-for="name"></span>
+	</div>
+
+
+	<div class="form-group">
+		<label asp-for="Salary"></label>
+		<input class="form-control" asp-for="Salary" />
+		<span class="text-danger" asp-validation-for="Salary"></span>
+	</div>
+
+
+
+	<div class="form-group">
+		<label asp-for="age"></label>
+		<input class="form-control" asp-for="age" />
+		<span class="text-danger" asp-validation-for="age"></span>
+	</div>
+
+
+	<div class="form-group">
+		<label asp-for="EmailAddress"></label>
+		<input class="form-control" asp-for="EmailAddress" />
+		<span class="text-danger" asp-validation-for="EmailAddress"></span>
+	</div>
+
+	<div class="form-group">
+		<label asp-for="IsActive"></label>
+		<input class="form-control" asp-for="IsActive" />
+		<span class="text-danger" asp-validation-for="IsActive"></span>
+	</div>
+
+	<div class="form-group">
+		<label asp-for="NumberPhone"></label>
+		<input class="form-control" asp-for="NumberPhone" />
+		<span class="text-danger" asp-validation-for="NumberPhone"></span>
+	</div>
+
+
+	<div class="form-group">
+		<label asp-for="HireDate"></label>
+		<input class="form-control" asp-for="HireDate" />
+		<span class="text-danger" asp-validation-for="HireDate"></span>
+	</div>
+
+	<div>
+		<select asp-items="Departments" class="form-control" asp-for="departmentid">
+			<option value="@null">Choos Department</option>
+		</select>
+	</div>
+
+		<div class="form-group">
+		<label class="col-form-label" asp-for="Image"></label>
+		<input type="file" asp-for="Image" class="form-control" accept="image/*" />
+		</div>
+
+</div>
+

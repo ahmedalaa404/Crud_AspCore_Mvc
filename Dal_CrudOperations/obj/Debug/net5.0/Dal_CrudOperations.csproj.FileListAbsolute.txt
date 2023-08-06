@@ -1,0 +1,15 @@
+C:\Users\Yassin\Desktop\Crude\Dal_CrudOperations\bin\Debug\net5.0\Dal_CrudOperations.deps.json
+C:\Users\Yassin\Desktop\Crude\Dal_CrudOperations\bin\Debug\net5.0\Dal_CrudOperations.runtimeconfig.json
+C:\Users\Yassin\Desktop\Crude\Dal_CrudOperations\bin\Debug\net5.0\Dal_CrudOperations.runtimeconfig.dev.json
+C:\Users\Yassin\Desktop\Crude\Dal_CrudOperations\bin\Debug\net5.0\Dal_CrudOperations.dll
+C:\Users\Yassin\Desktop\Crude\Dal_CrudOperations\bin\Debug\net5.0\Dal_CrudOperations.pdb
+C:\Users\Yassin\Desktop\Crude\Dal_CrudOperations\obj\Debug\net5.0\Dal_CrudOperations.csproj.AssemblyReference.cache
+C:\Users\Yassin\Desktop\Crude\Dal_CrudOperations\obj\Debug\net5.0\Dal_CrudOperations.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Yassin\Desktop\Crude\Dal_CrudOperations\obj\Debug\net5.0\Dal_CrudOperations.AssemblyInfoInputs.cache
+C:\Users\Yassin\Desktop\Crude\Dal_CrudOperations\obj\Debug\net5.0\Dal_CrudOperations.AssemblyInfo.cs
+C:\Users\Yassin\Desktop\Crude\Dal_CrudOperations\obj\Debug\net5.0\Dal_CrudOperations.csproj.CoreCompileInputs.cache
+C:\Users\Yassin\Desktop\Crude\Dal_CrudOperations\obj\Debug\net5.0\Dal_CrudOperations.dll
+C:\Users\Yassin\Desktop\Crude\Dal_CrudOperations\obj\Debug\net5.0\refint\Dal_CrudOperations.dll
+C:\Users\Yassin\Desktop\Crude\Dal_CrudOperations\obj\Debug\net5.0\Dal_CrudOperations.pdb
+C:\Users\Yassin\Desktop\Crude\Dal_CrudOperations\obj\Debug\net5.0\Dal_CrudOperations.genruntimeconfig.cache
+C:\Users\Yassin\Desktop\Crude\Dal_CrudOperations\obj\Debug\net5.0\ref\Dal_CrudOperations.dll

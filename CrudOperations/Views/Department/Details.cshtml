@@ -1,0 +1,13 @@
+﻿@model DepartmentVM
+
+<div>
+	<partial name="Partial/_DeleteDetails" />
+
+
+	<center>
+		<a asp-action="Delete" class="btn btn-danger" asp-route-id="@Model.id"> Delete</a>
+		<a asp-action="Index" class="btn btn-success mx-2"> Home Page</a>
+		<a asp-action="Update" class="btn btn-primary" asp-route-id="@Model.id">Update</a>
+	</center>
+
+</div>

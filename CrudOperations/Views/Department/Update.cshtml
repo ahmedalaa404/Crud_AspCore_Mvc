@@ -1,0 +1,13 @@
+﻿@model DepartmentVM
+
+<div asp-validation-summary="All" class="text-danger"></div>
+<form asp-action="Update">
+
+	<partial name="Partial/_UpdateCreatePartial" />
+	<button type="submit" class="btn btn-primary">Update Department</button>
+</form>
+
+@section ValidateSection
+	{
+	<partial name="~/Views/Shared/_ValidationScriptsPartial.cshtml" />
+}

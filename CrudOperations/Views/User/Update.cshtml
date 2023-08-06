@@ -1,0 +1,77 @@
+﻿@model UserVM
+
+
+
+
+
+
+<div asp-validation-summary="All" class="text-danger"></div>
+<form asp-action="Update" enctype="multipart/form-data">
+
+
+	<partial name="Partial/_CreateUpdate" />
+
+   
+
+
+
+	<button type="submit" class="btn btn-primary">Update Employee</button>
+</form>
+
+@section ValidateSection
+	{
+	<partial name="~/Views/Shared/_ValidationScriptsPartial.cshtml" />
+}
+<!--
+
+
+
+
+
+	<div class="form-group">
+		<label asp-for="name"></label>
+		<input class="form-control" asp-for="name" />
+		<span class="text-danger" asp-validation-for="name"></span>
+	</div>
+
+
+	<div class="form-group">
+		<label asp-for="Salary"></label>
+		<input class="form-control" asp-for="Salary" />
+		<span class="text-danger" asp-validation-for="Salary"></span>
+	</div>
+
+
+
+	<div class="form-group">
+		<label asp-for="age"></label>
+		<input class="form-control" asp-for="age" />
+		<span class="text-danger" asp-validation-for="age"></span>
+	</div>
+
+
+	<div class="form-group">
+		<label asp-for="EmailAddress"></label>
+		<input class="form-control" asp-for="EmailAddress" />
+		<span class="text-danger" asp-validation-for="EmailAddress"></span>
+	</div>
+
+	<div class="form-group">
+		<label asp-for="IsActive"></label>
+		<input class="form-control" asp-for="IsActive" />
+		<span class="text-danger" asp-validation-for="IsActive"></span>
+	</div>
+
+	<div class="form-group">
+		<label asp-for="NumberPhone"></label>
+		<input class="form-control" asp-for="NumberPhone" />
+		<span class="text-danger" asp-validation-for="NumberPhone"></span>
+	</div>
+
+
+	<div class="form-group">
+		<label asp-for="HireDate"></label>
+		<input class="form-control" asp-for="HireDate" />
+		<span class="text-danger" asp-validation-for="HireDate"></span>
+	</div>
+-->

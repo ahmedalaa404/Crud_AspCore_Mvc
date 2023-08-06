@@ -1,0 +1,66 @@
+﻿@model IEnumerable<RoleViewModel>
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>All Roles</h1>
+
+
+
+<div>
+	<a class="btn btn-outline-primary" asp-action="Create">Create Role</a>
+</div>
+
+<div class="my-5">
+	<form asp-action="Index">
+		<div class="row justify-content-center align-items-center">
+			<div class="col-lg-8">
+				<input class="form-control" placeholder="Search....." name="SearchValue" />
+			</div>
+			<div class="col-lg-3">
+				<button class="btn btn-success" type="submit">Search</button>
+			</div>
+		</div>
+	</form>
+</div>
+
+
+@{
+	if (Model.Count() > 0)
+	{
+
+		<center>
+			<a class="btn btn-success" asp-action="Create">Create Employee</a>
+		</center>
+		<div class="my-4">
+			<table class="table table-dark table-striped">
+				<thead>
+					<tr>
+						<th>@Html.DisplayNameFor(x=>x.id)</th>
+						<th>@Html.DisplayNameFor(x=>x.RoleName)</th>
+
+						<th>Delete</th>
+						<th>Update</th>
+						<th>Details</th>
+
+					</tr>
+				</thead>
+
+				<tbody>
+					@foreach (var item in Model)
+					{
+						<tr>
+							<th>@item.id</th>
+							<th>@Html.DisplayFor(x=>@item.RoleName)</th>
+
+							<partial name="PartialView/ButtonsIndex" model="@item.id">
+
+						</tr>
+					}
+
+				</tbody>
+			</table>
+		</div>
+	}
+}

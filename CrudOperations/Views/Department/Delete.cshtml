@@ -1,0 +1,20 @@
+﻿@model DepartmentVM
+
+<form asp-action="Delete">
+
+
+
+	<div>
+
+		<partial name="Partial/_DeleteDetails" />
+
+
+		<center>
+			<button  class="btn btn-danger" type="submit"> Delete</button>
+			<a asp-action="Index" class="btn btn-success mx-2"> Home Page</a>
+
+		</center>
+
+	</div>
+
+</form>

@@ -1,0 +1,61 @@
+﻿
+
+@model RegisterVM
+
+<div asp-validation-summary="All" class="text-danger">
+
+</div>
+
+<div class="my-4"> 
+
+	<div class="form-group">
+		<label asp-for="Fname"></label>
+		<input class="form-control" asp-for="Fname" />
+		<span class="text-danger" asp-validation-for="Fname"></span>
+	</div>
+
+
+	<div class="form-group">
+		<label asp-for="Lname"></label>
+		<input class="form-control" asp-for="Lname" />
+		<span class="text-danger" asp-validation-for="Lname"></span>
+	</div>
+
+
+	<div class="form-group">
+		<label asp-for="Email"></label>
+		<input class="form-control" asp-for="Email" />
+		<span class="text-danger" asp-validation-for="Email"></span>
+	</div>
+
+
+	<div class="form-group">
+		<label asp-for="PhoneNumber"></label>
+		<input class="form-control" asp-for="PhoneNumber" />
+		<span class="text-danger" asp-validation-for="PhoneNumber"></span>
+	</div>
+
+
+	<div class="form-group">
+		<label asp-for="Password"></label>
+		<input class="form-control" asp-for="Password" />
+		<span class="text-danger" asp-validation-for="Password"></span>
+	</div>
+
+	<div class="form-group">
+		<label asp-for="ConfirmPassword"></label>
+		<input class="form-control" asp-for="ConfirmPassword" />
+		<span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+	</div>
+
+	<div>
+		<label asp-for="IsAgree"></label>
+		<input class="form-control" asp-for="IsAgree" />
+		<span class="text-danger" asp-validation-for="IsAgree"></span>
+	</div>
+
+
+
+
+</div>
+

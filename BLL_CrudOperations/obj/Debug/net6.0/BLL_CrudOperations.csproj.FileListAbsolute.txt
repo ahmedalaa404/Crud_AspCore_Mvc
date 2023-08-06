@@ -1,0 +1,15 @@
+C:\Users\Yassin\Desktop\Crude\BLL_CrudOperations\bin\Debug\net6.0\BLL_CrudOperations.deps.json
+C:\Users\Yassin\Desktop\Crude\BLL_CrudOperations\bin\Debug\net6.0\BLL_CrudOperations.dll
+C:\Users\Yassin\Desktop\Crude\BLL_CrudOperations\bin\Debug\net6.0\BLL_CrudOperations.pdb
+C:\Users\Yassin\Desktop\Crude\BLL_CrudOperations\bin\Debug\net6.0\Dal_CrudOperations.dll
+C:\Users\Yassin\Desktop\Crude\BLL_CrudOperations\bin\Debug\net6.0\Dal_CrudOperations.pdb
+C:\Users\Yassin\Desktop\Crude\BLL_CrudOperations\obj\Debug\net6.0\BLL_CrudOperations.csproj.AssemblyReference.cache
+C:\Users\Yassin\Desktop\Crude\BLL_CrudOperations\obj\Debug\net6.0\BLL_CrudOperations.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Yassin\Desktop\Crude\BLL_CrudOperations\obj\Debug\net6.0\BLL_CrudOperations.AssemblyInfoInputs.cache
+C:\Users\Yassin\Desktop\Crude\BLL_CrudOperations\obj\Debug\net6.0\BLL_CrudOperations.AssemblyInfo.cs
+C:\Users\Yassin\Desktop\Crude\BLL_CrudOperations\obj\Debug\net6.0\BLL_CrudOperations.csproj.CoreCompileInputs.cache
+C:\Users\Yassin\Desktop\Crude\BLL_CrudOperations\obj\Debug\net6.0\BLL_CrudOperations.csproj.CopyComplete
+C:\Users\Yassin\Desktop\Crude\BLL_CrudOperations\obj\Debug\net6.0\BLL_CrudOperations.dll
+C:\Users\Yassin\Desktop\Crude\BLL_CrudOperations\obj\Debug\net6.0\refint\BLL_CrudOperations.dll
+C:\Users\Yassin\Desktop\Crude\BLL_CrudOperations\obj\Debug\net6.0\BLL_CrudOperations.pdb
+C:\Users\Yassin\Desktop\Crude\BLL_CrudOperations\obj\Debug\net6.0\ref\BLL_CrudOperations.dll
