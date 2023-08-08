@@ -13,13 +13,13 @@ namespace CrudOperations.Controllers
 	{
 		private readonly UserManager<ApplicationsUser> _usermanager; // To sign IN User;
 		private readonly SignInManager<ApplicationsUser> _signManager  /*to make User Create*/;
-		private readonly ImailSettings _mailmanager;
+		private readonly IEmailSettings _MailManager;
 
-		public AccountController(UserManager<ApplicationsUser> usermanager, SignInManager<ApplicationsUser> SignManager,ImailSettings mailmanager)
+		public AccountController(UserManager<ApplicationsUser> usermanager, SignInManager<ApplicationsUser> SignManager,IEmailSettings mailmanager)
 		{
 			_usermanager = usermanager;
 			_signManager = SignManager;
-			_mailmanager = mailmanager;
+			_MailManager = mailmanager;
 		}
 
 		#region Register
@@ -153,7 +153,8 @@ namespace CrudOperations.Controllers
 						To = User.Email,
 						Body = PasswordLink,
 					};
-					_mailmanager.SendMail(email);
+					//_mailmanager.SendMail(email);
+					_MailManager.SendEmail(email);
 					return RedirectToAction(nameof(CheckBox));
 				}
 				else

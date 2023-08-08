@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EKBJ5RIKWZrRTbXt7y2e9ydb3KQgZGBkqMqIci6UJqXZqQT4lWWzqg4ZYZWl/UcAJGld8PjJkGxbGhLrp3pu1w==",
+  "dgSpecHash": "BD/QTUrBGYUT2Dgl+yDNduP1iFvmZtRECG3sB1W7TAdEpHp3wa7ax5vUeoIhm/z960cZWgNe7o5EbhoI5mwKlA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Yassin\\Desktop\\Crude\\BLL_CrudOperations\\BLL_CrudOperations.csproj",
+  "projectFilePath": "D:\\New folder\\Crude\\BLL_CrudOperations\\BLL_CrudOperations.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Yassin\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.16\\microsoft.aspnetcore.cryptography.internal.5.0.16.nupkg.sha512",
     "C:\\Users\\Yassin\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.16\\microsoft.aspnetcore.cryptography.keyderivation.5.0.16.nupkg.sha512",

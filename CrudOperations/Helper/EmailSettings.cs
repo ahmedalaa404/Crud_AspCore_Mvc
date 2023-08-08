@@ -1,5 +1,5 @@
 ﻿
-using CrudOperations.ConfigAppSetting;
+using CrudOperations.Settings;
 using Dal_CrudOperations.DomainModel;
 using MailKit.Net.Smtp;
 using MailKit.Security;
@@ -10,49 +10,62 @@ using MimeKit;
 
 namespace CrudOperations.Helper
 {
-	public class EmailSettings : ImailSettings
+	public class EmailSettings : IEmailSettings
 	{
-		private readonly mailSetting _options;
-		#region Old Functionality
-		//public static  void SendEmail(Email Model)
-		//{
-		//	var client = new SmtpClient("smtp.gmail.com", 587);   // LeagcyEmail   //host and Port;
-		//	client.EnableSsl = true;
-		//	client.Credentials = new NetworkCredential("ahmedalaayassin6@gmail.com", "dunlftgznketuptb");
-		//	 client.Send("ahmedalaayassin6@gmail.com",Model.To,Model.Subject,Model.Body);
+		private readonly MailSettings _mail;
 
-
-
-
-
-		//}
-		#endregion
-
-		public EmailSettings(IOptions<mailSetting> options)
-		{
-			_options = options.Value;
+		//To Inject All Thing Of  Mailsetting in AppSetting 
+		public EmailSettings(IOptions<MailSettings> Mail)
+        {
+			_mail = Mail.Value;
 		}
 
-		public void SendMail(Email model)
+        #region Old Functionality
+        //public static  void SendEmail(Email Model)
+        //{
+        //	var client = new SmtpClient("smtp.gmail.com", 587);   // LeagcyEmail   //host and Port;
+        //	client.EnableSsl = true;
+        //	client.Credentials = new NetworkCredential("ahmedalaayassin6@gmail.com", "dunlftgznketuptb");
+        //	 client.Send("ahmedalaayassin6@gmail.com",Model.To,Model.Subject,Model.Body);
+
+
+
+
+
+        //}
+        #endregion
+
+
+
+        public void SendEmail(Email model)
 		{
 
-			var Mail = new MimeMessage
+			var Mail = new MimeMessage	   // it`s Used By Package
 			{
-				Sender = MailboxAddress.Parse(_options.Email),
+				Sender = MailboxAddress.Parse(_mail.Email),	 // Represent Of Email Persone Have Send the Link To Reset The Password
 				Subject = model.Subject,
-
-
-
 			};
-			Mail.To.Add(MailboxAddress.Parse(model.To));
-			var Builder = new BodyBuilder();
-			Builder.TextBody = model.Body;
+
+
+
+
+			Mail.To.Add(MailboxAddress.Parse(model.To));	   // this Persone U Recipt The Request 
+
+
+			var Builder = new BodyBuilder();   // To Make Builder Of Persone 
+
+
+			Builder.HtmlBody = model.Body; // thats Body 
+
 			Mail.Body = Builder.ToMessageBody();
-			Mail.From.Add(new MailboxAddress(_options.DisplayName, _options.Email));
+
+			Mail.From.Add(new MailboxAddress(_mail.DisplayName, _mail.Email));
 
 			using var smtpProvieder = new SmtpClient();
-			smtpProvieder.Connect(_options.Host, _options.Port, SecureSocketOptions.StartTls);
-			smtpProvieder.Authenticate(_options.Email, _options.password);
+			smtpProvieder.Connect(_mail.Host, _mail.Port, SecureSocketOptions.StartTls);
+
+			smtpProvieder.Authenticate(_mail.Email, _mail.Password);
+			smtpProvieder.Send(Mail);
 			smtpProvieder.Disconnect ( true);
 		}
 

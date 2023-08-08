@@ -2106,11 +2106,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Yassin\\Desktop\\Crude\\BLL_CrudOperations\\BLL_CrudOperations.csproj",
+      "projectUniqueName": "D:\\New folder\\Crude\\BLL_CrudOperations\\BLL_CrudOperations.csproj",
       "projectName": "BLL_CrudOperations",
-      "projectPath": "C:\\Users\\Yassin\\Desktop\\Crude\\BLL_CrudOperations\\BLL_CrudOperations.csproj",
+      "projectPath": "D:\\New folder\\Crude\\BLL_CrudOperations\\BLL_CrudOperations.csproj",
       "packagesPath": "C:\\Users\\Yassin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Yassin\\Desktop\\Crude\\BLL_CrudOperations\\obj\\",
+      "outputPath": "D:\\New folder\\Crude\\BLL_CrudOperations\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Yassin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2127,8 +2127,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Yassin\\Desktop\\Crude\\Dal_CrudOperations\\Dal_CrudOperations.csproj": {
-              "projectPath": "C:\\Users\\Yassin\\Desktop\\Crude\\Dal_CrudOperations\\Dal_CrudOperations.csproj"
+            "D:\\New folder\\Crude\\Dal_CrudOperations\\Dal_CrudOperations.csproj": {
+              "projectPath": "D:\\New folder\\Crude\\Dal_CrudOperations\\Dal_CrudOperations.csproj"
             }
           }
         }

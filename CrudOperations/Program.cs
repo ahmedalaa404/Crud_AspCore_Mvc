@@ -5,16 +5,15 @@ using BLL_CrudOperations.InterFaces;
 using BLL_CrudOperations.Repos;
 using CrudOperations.Profiler;
 using Dal_CrudOperations.Database;
-using Dal_CrudOperations.DomainModel;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Net.Mail;
-using CrudOperations.ConfigAppSetting;
 using CrudOperations.Helper;
 using System;
+using CrudOperations.Settings;
+using Dal_CrudOperations.DomainModel;
 
 namespace CrudOperations
 {
@@ -48,7 +47,10 @@ namespace CrudOperations
 
 			// Configuration of Account of Security Module 
 
-			Builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+
+
+			Builder.Services.AddIdentity<ApplicationsUser, IdentityRole>()
+
 			.AddEntityFrameworkStores<Context>()   // To Active All Interfaces of Identity
 			.AddDefaultTokenProviders(); //Used To Generate Token Provieder
 			Builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(
@@ -56,14 +58,16 @@ namespace CrudOperations
 					{
 						x.LoginPath = "account/Login";
 						x.AccessDeniedPath = "Home/Error";
-						x.ExpireTimeSpan = TimeSpan.Parse("20");
-
-						
 					}
-				
-				
 				);
 
+			Builder.Services.Configure<MailSettings>(Builder.Configuration.GetSection("MailSetting"));
+
+			Builder.Services.AddTransient<IEmailSettings, EmailSettings>();
+
+
+			Builder.Services.Configure<TwilioSettings>(Builder.Configuration.GetSection("PhoneSetting"));
+			 Builder.Services.AddTransient<ITwilio, TwilioServices>();
 
 
 
@@ -73,18 +77,14 @@ namespace CrudOperations
 
 
 
+//Builder.Services.Configure<EmailSettings>(Builder.Configuration.GetSection("mailSetting"));
 
-
-
-
-
-			Builder.Services.Configure<mailSetting>(Builder.Configuration.GetSection("mailSetting"));
-			Builder.Services.AddTransient<ImailSettings,EmailSettings>();
+//Builder.Services.AddTransient<IEmailSettings,EmailSettings>();
 
 			#region Auth Builder.Services
-			//Builder.Services.AddScoped<UserManager<ApplicationsUser>>();
-			//Builder.Services.AddScoped<SignInManager<ApplicationsUser>>();
-			//Builder.Services.AddScoped<RoleManager<IdentityRole>>();
+//Builder.Services.AddScoped<UserManager<ApplicationsUser>>();
+//Builder.Services.AddScoped<SignInManager<ApplicationsUser>>();
+//Builder.Services.AddScoped<RoleManager<IdentityRole>>();
 			#endregion
 
 
@@ -98,7 +98,7 @@ namespace CrudOperations
 
 
 			#region Config Http
-			var app = Builder.Build();
+var app = Builder.Build();
 
 			if (app.Environment.IsDevelopment())
 			{

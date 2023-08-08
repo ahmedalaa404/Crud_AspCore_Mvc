@@ -2,10 +2,9 @@
 
 namespace CrudOperations.Helper
 {
-	public interface ImailSettings
+	public interface IEmailSettings
 	{
-		public void SendMail(Email model);
-
+		public void SendEmail(Email Model);
 
 
 
