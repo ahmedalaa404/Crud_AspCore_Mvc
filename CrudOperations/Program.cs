@@ -70,19 +70,18 @@ namespace CrudOperations
 			Builder.Services.Configure<TwilioSettings>(Builder.Configuration.GetSection("PhoneSetting"));
 			Builder.Services.AddTransient<ITwilio, TwilioServices>();
 
-			Builder.Services.AddAuthentication(o =>
-			{
-				o.DefaultAuthenticateScheme = GoogleDefaults.AuthenticationScheme;
-				o.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
-
-			}).AddGoogle(
-						  o =>
-						  {
-							  IConfiguration GoogleAuthenticate = Builder.Configuration.GetSection("Authentications:Google");
-							  o.ClientId = GoogleAuthenticate["ClientId"];
-							  o.ClientSecret = GoogleAuthenticate["ClientSecret"];
-						  }
-				);
+			//Builder.Services.AddAuthentication(o =>
+			//{
+			//	o.DefaultAuthenticateScheme = GoogleDefaults.AuthenticationScheme;
+			//	o.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
+			//}).AddGoogle(
+			//			  f =>
+			//			  {
+			//				  IConfiguration GoogleAuthenticate = Builder.Configuration.GetSection("Authentications:Google");
+			//				  f.ClientId = GoogleAuthenticate["ClientId"];
+			//				  f.ClientSecret = GoogleAuthenticate["ClientSecret"];
+			//			  }
+			//	);
 
 
 
