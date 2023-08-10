@@ -14,6 +14,7 @@ using CrudOperations.Helper;
 using System;
 using CrudOperations.Settings;
 using Dal_CrudOperations.DomainModel;
+using Microsoft.AspNetCore.Authentication.Google;
 
 namespace CrudOperations
 {
@@ -67,7 +68,21 @@ namespace CrudOperations
 
 
 			Builder.Services.Configure<TwilioSettings>(Builder.Configuration.GetSection("PhoneSetting"));
-			 Builder.Services.AddTransient<ITwilio, TwilioServices>();
+			Builder.Services.AddTransient<ITwilio, TwilioServices>();
+
+			Builder.Services.AddAuthentication(o =>
+			{
+				o.DefaultAuthenticateScheme = GoogleDefaults.AuthenticationScheme;
+				o.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
+
+			}).AddGoogle(
+						  o =>
+						  {
+							  IConfiguration GoogleAuthenticate = Builder.Configuration.GetSection("Authentications:Google");
+							  o.ClientId = GoogleAuthenticate["ClientId"];
+							  o.ClientSecret = GoogleAuthenticate["ClientSecret"];
+						  }
+				);
 
 
 
@@ -76,15 +91,14 @@ namespace CrudOperations
 
 
 
+			//Builder.Services.Configure<EmailSettings>(Builder.Configuration.GetSection("mailSetting"));
 
-//Builder.Services.Configure<EmailSettings>(Builder.Configuration.GetSection("mailSetting"));
-
-//Builder.Services.AddTransient<IEmailSettings,EmailSettings>();
+			//Builder.Services.AddTransient<IEmailSettings,EmailSettings>();
 
 			#region Auth Builder.Services
-//Builder.Services.AddScoped<UserManager<ApplicationsUser>>();
-//Builder.Services.AddScoped<SignInManager<ApplicationsUser>>();
-//Builder.Services.AddScoped<RoleManager<IdentityRole>>();
+			//Builder.Services.AddScoped<UserManager<ApplicationsUser>>();
+			//Builder.Services.AddScoped<SignInManager<ApplicationsUser>>();
+			//Builder.Services.AddScoped<RoleManager<IdentityRole>>();
 			#endregion
 
 
@@ -98,7 +112,7 @@ namespace CrudOperations
 
 
 			#region Config Http
-var app = Builder.Build();
+			var app = Builder.Build();
 
 			if (app.Environment.IsDevelopment())
 			{

@@ -25,7 +25,7 @@ namespace CrudOperations.Models
 
 		public bool IsAgree { get; set; }
 		[RegularExpression("^(?:\\+20|0)?1[0-9]{9}$")]
-		public int? PhoneNumber { get; set; }
+		public string PhoneNumber { get; set; }
 
 
 

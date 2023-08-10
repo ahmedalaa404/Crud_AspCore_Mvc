@@ -9,7 +9,7 @@ namespace Dal_CrudOperations.DomainModel
 	public class SmsMessage
 	{
 
-        public string Number { get; set; }
+        public string NumberPhone { get; set; }
 
 
         public string Body { get; set; }

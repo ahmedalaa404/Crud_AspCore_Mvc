@@ -14,7 +14,7 @@ namespace Dal_CrudOperations.DomainModel
 
         public bool IsAgree { get; set; }
 
-        public int?  PhoneNumber { get; set; }
+        public string  PhoneNumber { get; set; }
 
     }
 }
