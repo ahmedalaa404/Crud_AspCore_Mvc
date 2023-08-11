@@ -1,20 +1,18 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
 using BLL_CrudOperations.InterFaces;
 using BLL_CrudOperations.Repos;
+using CrudOperations.Helper;
 using CrudOperations.Profiler;
+using CrudOperations.Settings;
 using Dal_CrudOperations.Database;
+using Dal_CrudOperations.DomainModel;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using CrudOperations.Helper;
-using System;
-using CrudOperations.Settings;
-using Dal_CrudOperations.DomainModel;
-using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.Extensions.Hosting;
 
 namespace CrudOperations
 {
@@ -70,6 +68,12 @@ namespace CrudOperations
 			Builder.Services.Configure<TwilioSettings>(Builder.Configuration.GetSection("PhoneSetting"));
 			Builder.Services.AddTransient<ITwilio, TwilioServices>();
 
+
+
+
+
+			#region AUTH With Google 
+
 			//Builder.Services.AddAuthentication(o =>
 			//{
 			//	o.DefaultAuthenticateScheme = GoogleDefaults.AuthenticationScheme;
@@ -82,17 +86,11 @@ namespace CrudOperations
 			//				  f.ClientSecret = GoogleAuthenticate["ClientSecret"];
 			//			  }
 			//	);
+			#endregion
 
 
 
 
-
-
-
-
-			//Builder.Services.Configure<EmailSettings>(Builder.Configuration.GetSection("mailSetting"));
-
-			//Builder.Services.AddTransient<IEmailSettings,EmailSettings>();
 
 			#region Auth Builder.Services
 			//Builder.Services.AddScoped<UserManager<ApplicationsUser>>();

@@ -6,9 +6,9 @@ namespace CrudOperations.Models
 	{
 
 
-        public string  Fname { get; set; }
-        public string Lname { get; set; }
-        [Required(ErrorMessage = "This Column Is Required")]
+		public string Fname { get; set; }
+		public string Lname { get; set; }
+		[Required(ErrorMessage = "This Column Is Required")]
 		[EmailAddress(ErrorMessage = "Enter Email Valid ")]
 
 		public string Email { get; set; }
@@ -29,5 +29,5 @@ namespace CrudOperations.Models
 
 
 
-    }
+	}
 }

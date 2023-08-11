@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -19,7 +18,7 @@ namespace CrudOperations.Controllers
 		private readonly IEmailSettings _MailManager;
 		private readonly ITwilio _smsServices;
 
-		public AccountController(UserManager<ApplicationsUser> usermanager, SignInManager<ApplicationsUser> SignManager,IEmailSettings mailmanager,ITwilio SmsServices)
+		public AccountController(UserManager<ApplicationsUser> usermanager, SignInManager<ApplicationsUser> SignManager, IEmailSettings mailmanager, ITwilio SmsServices)
 		{
 			_usermanager = usermanager;
 			_signManager = SignManager;
@@ -48,8 +47,8 @@ namespace CrudOperations.Controllers
 					UserName = Model.Email.Split("@")[0],
 					Email = Model.Email,
 					IsAgree = Model.IsAgree,
-					PhoneNumber=string.Concat("+2",Model.PhoneNumber)
-					
+					PhoneNumber = string.Concat("+2", Model.PhoneNumber)
+
 				};
 
 				var Resulate = await _usermanager.CreateAsync(User, Model.Password);
@@ -139,7 +138,7 @@ namespace CrudOperations.Controllers
 
 		public async Task<IActionResult> SendEmail(ForgetPasswordVM Model)
 		{
-			if(ModelState.IsValid)
+			if (ModelState.IsValid)
 			{
 
 
@@ -149,8 +148,8 @@ namespace CrudOperations.Controllers
 
 				if (User is not null)
 				{
-					var TokenResetPassword=await _usermanager.GeneratePasswordResetTokenAsync(User);
-					var PasswordLink = Url.Action("ResetPassword", "account", new { email = Model.Email ,token= TokenResetPassword },Request.Scheme);
+					var TokenResetPassword = await _usermanager.GeneratePasswordResetTokenAsync(User);
+					var PasswordLink = Url.Action("ResetPassword", "account", new { email = Model.Email, token = TokenResetPassword }, Request.Scheme);
 
 					Email email = new Email()
 					{
@@ -198,11 +197,11 @@ namespace CrudOperations.Controllers
 					var sms = new SmsMessage()
 					{
 						Body = PasswordLink,
-						NumberPhone=User.PhoneNumber
+						NumberPhone = User.PhoneNumber
 					};
 					_smsServices.send(sms);
 
-					return Ok("Check Phone Number") ;
+					return Ok("Check Phone Number");
 				}
 				else
 				{
@@ -236,7 +235,7 @@ namespace CrudOperations.Controllers
 
 		#region Reset Password 
 		[HttpGet]
-		public IActionResult ResetPassword(string email, string token )
+		public IActionResult ResetPassword(string email, string token)
 		{
 			TempData["Email"] = email;
 			TempData["token"] = token;
@@ -246,14 +245,14 @@ namespace CrudOperations.Controllers
 		[HttpPost]
 		public async Task<IActionResult> ResetPassword(ResetVM model)
 		{
-			var email = TempData["email"] as string ;
+			var email = TempData["email"] as string;
 			var token = TempData["token"] as string;
-			var user =await _usermanager.FindByEmailAsync(email);
-			
+			var user = await _usermanager.FindByEmailAsync(email);
+
 			if (ModelState.IsValid)
 			{
-				var result =await _usermanager.ResetPasswordAsync(user,token,model.NewPassword);
-				if(result.Succeeded) 
+				var result = await _usermanager.ResetPasswordAsync(user, token, model.NewPassword);
+				if (result.Succeeded)
 				{
 					return RedirectToAction(nameof(Login));
 				}
@@ -271,31 +270,36 @@ namespace CrudOperations.Controllers
 
 
 
-		public IActionResult LoginWithAuth()
-		{
-			var prop = new AuthenticationProperties
-			{
-				RedirectUri = Url.Action("GoogleResponse")
-			};
-			return Challenge(prop, GoogleDefaults.AuthenticationScheme);
-		}
+		#region Auth With Google 
+
+		//public IActionResult LoginWithAuth()
+		//{
+		//	var prop = new AuthenticationProperties
+		//	{
+		//		RedirectUri = Url.Action("GoogleResponse")
+		//	};
+		//	return Challenge(prop, GoogleDefaults.AuthenticationScheme);
+		//}
 
 
 
 
-		public async Task<IActionResult> GoogleResponse(string issuer)
-		{
-			var result = await HttpContext.AuthenticateAsync(GoogleDefaults.AuthenticationScheme);
-			var cliams = result.Principal.Identities.FirstOrDefault().Claims.Select(x =>
-			new
-			{
-				x.Issuer,
-				x.OriginalIssuer,
-				x.Type,
-				x.Value
-			});
-			return RedirectToAction("index", "home");
-		}
+		//public async Task<IActionResult> GoogleResponse(string issuer)
+		//{
+		//	var result = await HttpContext.AuthenticateAsync(GoogleDefaults.AuthenticationScheme);
+		//	var cliams = result.Principal.Identities.FirstOrDefault().Claims.Select(x =>
+		//	new
+		//	{
+		//		x.Issuer,
+		//		x.OriginalIssuer,
+		//		x.Type,
+		//		x.Value
+		//	});
+		//	return RedirectToAction("index", "home");
+		//}
+		#endregion
+
+
 
 	}
 }

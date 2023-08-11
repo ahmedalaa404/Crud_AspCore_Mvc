@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using CrudOperations.Models;
+﻿using CrudOperations.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -155,10 +154,10 @@ namespace CrudOperations.Controllers
 
 		#region Create
 		[HttpGet]
-		public IActionResult Create() 
+		public IActionResult Create()
 		{
 
-			return View();	  
+			return View();
 		}
 
 
@@ -166,11 +165,11 @@ namespace CrudOperations.Controllers
 		public async Task<IActionResult> Create(RoleViewModel Model)
 		{
 
-		  var Role=new IdentityRole()
-		  {
-			  Name=Model.RoleName,
-			  Id=Model.id
-		  };
+			var Role = new IdentityRole()
+			{
+				Name = Model.RoleName,
+				Id = Model.id
+			};
 
 			await _roleManager.CreateAsync(Role);
 

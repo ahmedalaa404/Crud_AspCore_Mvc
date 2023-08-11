@@ -1,5 +1,4 @@
 ﻿using Dal_CrudOperations.DomainModel;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.ComponentModel.DataAnnotations;

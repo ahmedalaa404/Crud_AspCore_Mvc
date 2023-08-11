@@ -7,14 +7,14 @@ namespace CrudOperations.Models
 
 
 
-        public string id { get; set; }
-        public string  RoleName { get; set; }
+		public string id { get; set; }
+		public string RoleName { get; set; }
 
 
-        public RoleViewModel()
-        {
-            id= Guid .NewGuid().ToString();
-        }
+		public RoleViewModel()
+		{
+			id = Guid.NewGuid().ToString();
+		}
 
-    }
+	}
 }

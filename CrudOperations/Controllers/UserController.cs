@@ -1,12 +1,8 @@
 ﻿using AutoMapper;
-using CrudOperations.Helper;
 using CrudOperations.Models;
 using Dal_CrudOperations.DomainModel;
-using Dal_CrudOperations.Migrations;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,8 +15,8 @@ namespace CrudOperations.Controllers
 		private readonly SignInManager<ApplicationsUser> _signinmanager;
 		private readonly IMapper mapper;
 
-		public UserController(UserManager<ApplicationsUser> usermanager,SignInManager<ApplicationsUser> signinmanager , IMapper mapper)
-        {
+		public UserController(UserManager<ApplicationsUser> usermanager, SignInManager<ApplicationsUser> signinmanager, IMapper mapper)
+		{
 			_usermanager = usermanager;
 			_signinmanager = signinmanager;
 			this.mapper = mapper;
@@ -28,11 +24,11 @@ namespace CrudOperations.Controllers
 
 
 		[HttpGet]
-        public async Task<IActionResult> Index(string SearchValue)
+		public async Task<IActionResult> Index(string SearchValue)
 		{
-			if(SearchValue is not null)
+			if (SearchValue is not null)
 			{
-			   var Users=await  _usermanager.FindByEmailAsync(SearchValue);
+				var Users = await _usermanager.FindByEmailAsync(SearchValue);
 				var UserVm = new UserVM
 				{
 					id = Users.Id,
@@ -43,7 +39,7 @@ namespace CrudOperations.Controllers
 					Role = _usermanager.GetRolesAsync(Users).Result
 				};
 
-				 return View(new List<UserVM>() { UserVm } );
+				return View(new List<UserVM>() { UserVm });
 
 			}
 
@@ -104,17 +100,17 @@ namespace CrudOperations.Controllers
 
 
 		[HttpGet]
-		public async Task<IActionResult> Details(string id,string NameView="Details")
+		public async Task<IActionResult> Details(string id, string NameView = "Details")
 		{
 			if (id is null)
 				return BadRequest();
 
-			var user =await _usermanager.FindByIdAsync(id);
-			if(user is null)
-			return NotFound();
+			var user = await _usermanager.FindByIdAsync(id);
+			if (user is null)
+				return NotFound();
 
-			var Uservm= mapper.Map <UserVM>(user);
-				#region Old mapping
+			var Uservm = mapper.Map<UserVM>(user);
+			#region Old mapping
 			//var Uservm = new UserVM()
 			//{
 			//	Fname = user.Fname, Lname = user.Lname,
@@ -151,13 +147,13 @@ namespace CrudOperations.Controllers
 			{
 				try
 				{
-					var userApps =await _usermanager.FindByIdAsync(Users.id);
+					var userApps = await _usermanager.FindByIdAsync(Users.id);
 					userApps.PhoneNumber = Users.PhoneNumber;
 					userApps.Fname = Users.Fname;
 					userApps.Lname = Users.Lname;
 					userApps.Email = Users.Email;
 
-					var resulat  =await _usermanager.UpdateAsync(userApps);
+					var resulat = await _usermanager.UpdateAsync(userApps);
 
 					if (resulat.Succeeded)
 						return RedirectToAction(nameof(Index));
@@ -188,7 +184,7 @@ namespace CrudOperations.Controllers
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> Delete([FromRoute] string  id, UserVM Model)
+		public async Task<IActionResult> Delete([FromRoute] string id, UserVM Model)
 		{
 			if (id != Model.id)
 				return BadRequest(string.Empty);
@@ -196,8 +192,8 @@ namespace CrudOperations.Controllers
 			{
 
 				var user = await _usermanager.FindByIdAsync(Model.id);
-				
-					await _usermanager.DeleteAsync(user);
+
+				await _usermanager.DeleteAsync(user);
 
 				return RedirectToAction(nameof(Index));
 			}
@@ -205,7 +201,7 @@ namespace CrudOperations.Controllers
 			{
 				return View(Model);
 			}
-		}											   
+		}
 		#endregion
 
 

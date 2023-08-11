@@ -6,9 +6,9 @@ namespace CrudOperations.Models
 	{
 		[Required]
 		[EmailAddress]
-        public string Email { get; set; }
+		public string Email { get; set; }
 
 
 
-    }
+	}
 }

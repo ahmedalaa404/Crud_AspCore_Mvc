@@ -12,7 +12,7 @@ namespace CrudOperations.Profiler
 			CreateMap<Employee, EmployeeVm>().ReverseMap();
 			CreateMap<Department, DepartmentVM>().ReverseMap();
 
-			CreateMap<ApplicationsUser,UserVM>().ReverseMap();
+			CreateMap<ApplicationsUser, UserVM>().ReverseMap();
 
 		}
 
