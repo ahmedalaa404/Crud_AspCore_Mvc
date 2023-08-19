@@ -20,7 +20,7 @@ namespace Dal_CrudOperations.DomainModel
 		public bool IsActive { get; set; }
 
 
-		public int NumberPhone { get; set; }
+		public string NumberPhone { get; set; }
 
 		public DateTime HireDate { get; set; }
 

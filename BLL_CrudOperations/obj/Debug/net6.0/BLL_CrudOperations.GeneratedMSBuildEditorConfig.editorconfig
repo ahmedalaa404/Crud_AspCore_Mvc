@@ -8,4 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BLL_CrudOperations
-build_property.ProjectDir = D:\New folder\Crude\BLL_CrudOperations\
+build_property.ProjectDir = C:\Users\Yassin\Desktop\Crud_AspCore_Mvc\BLL_CrudOperations\

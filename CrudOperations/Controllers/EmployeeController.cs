@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Twilio.TwiML.Messaging;
 
 namespace CrudOperations.Controllers
 {
@@ -57,8 +58,10 @@ namespace CrudOperations.Controllers
 
 			if (ModelState.IsValid)
 			{
-				employeeVm.ImageName = await DocumentSetting.UploadFillesAsync(employeeVm.Image, "Image");
-
+				if(employeeVm.Image is not null)
+				{
+					employeeVm.ImageName = await DocumentSetting.UploadFillesAsync(employeeVm.Image, "Image");
+				}
 				var Employee = _mapping.Map<EmployeeVm, Employee>(employeeVm);
 				try
 				{
@@ -137,15 +140,36 @@ namespace CrudOperations.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Update([FromRoute] int id, EmployeeVm EmployeeVM)
 		{
+			string ImageName;
 			if (id != EmployeeVM.id)
 				return BadRequest(string.Empty);
 			if (ModelState.IsValid)
 			{
-				DocumentSetting.DeleteFile(EmployeeVM.ImageName, "Image");
-				var employee = _mapping.Map<EmployeeVm, Employee>(EmployeeVM);
-				_uniteOFWork.EmployeeRepo.Update(employee);
-				await _uniteOFWork.Complit();
-				return RedirectToAction(nameof(Index));
+				try
+				{
+					var UserOld = await _uniteOFWork.EmployeeRepo.GetById(id);
+					if (EmployeeVM.ImageName != UserOld.ImageName)
+					{
+						DocumentSetting.DeleteFile(UserOld.ImageName, "Image");
+						if(EmployeeVM.ImageName is not null)
+						{
+
+							EmployeeVM .ImageName= await DocumentSetting.UploadFillesAsync(EmployeeVM.Image, "Image");
+
+						}
+					}
+					
+					var employee = _mapping.Map<EmployeeVm, Employee>(EmployeeVM);
+					_uniteOFWork.EmployeeRepo.Update(employee);
+					await _uniteOFWork.Complit();
+					return RedirectToAction(nameof(Index));
+				}
+				catch (System.Exception message)
+				{
+
+					ModelState.AddModelError(string.Empty, message.Message);
+					return View(EmployeeVM);
+				}
 			}
 			else
 			{

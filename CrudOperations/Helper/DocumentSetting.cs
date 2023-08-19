@@ -18,9 +18,14 @@ namespace CrudOperations.Helper
 			string FilePath = Path.Combine(FolderPath, FileName);
 
 			//Save File In Server As Streams Shot Per Time 
-			using var Fs = new FileStream(FilePath, FileMode.Create);  //ToCreate File
-			await File.CopyToAsync(Fs);                                 //IF File Is Excite It make Override This Use IT in Update 
-			return FileName;
+			using (var Fs = new FileStream(FilePath, FileMode.Create))
+			{
+				await File.CopyToAsync(Fs);   //ToCreate File
+				return FileName;
+			}
+
+
+			//IF File Is Excite It make Override This Use IT in Update 
 		}
 
 		public static void DeleteFile(string Filename, string folderName)

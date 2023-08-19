@@ -1,11 +1,8 @@
 ﻿using CrudOperations.Helper;
 using CrudOperations.Models;
 using Dal_CrudOperations.DomainModel;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
 using System.Threading.Tasks;
 
 

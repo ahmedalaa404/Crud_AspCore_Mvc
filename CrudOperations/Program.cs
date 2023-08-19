@@ -20,6 +20,7 @@ namespace CrudOperations
 	{
 		public static void Main(string[] args)
 		{
+
 			var Builder = WebApplication.CreateBuilder(args);
 
 
@@ -32,17 +33,17 @@ namespace CrudOperations
 			{
 				options.UseSqlServer(Builder.Configuration.GetConnectionString("DefaultConnections"));
 			});
-
-
-
-
 			//Builder.Services.AddScoped<IDepartmentsRepo, DepartmentsRepo>();
 
 			//Builder.Services.AddScoped<IEmployeeRepo, EmployeeRepo>();
 			Builder.Services.AddScoped<IUniteOFWork, UniteOfWork>();
 
-
 			Builder.Services.AddAutoMapper(x => x.AddProfile(new MappingProfilers()));
+
+
+
+
+
 
 			// Configuration of Account of Security Module 
 
@@ -57,6 +58,7 @@ namespace CrudOperations
 					{
 						x.LoginPath = "account/Login";
 						x.AccessDeniedPath = "Home/Error";
+
 					}
 				);
 
@@ -65,8 +67,8 @@ namespace CrudOperations
 			Builder.Services.AddTransient<IEmailSettings, EmailSettings>();
 
 
-			Builder.Services.Configure<TwilioSettings>(Builder.Configuration.GetSection("PhoneSetting"));
-			Builder.Services.AddTransient<ITwilio, TwilioServices>();
+			//Builder.Services.Configure<TwilioSettings>(Builder.Configuration.GetSection("PhoneSetting"));
+			//Builder.Services.AddTransient<ITwilio, TwilioServices>();
 
 
 
@@ -134,7 +136,7 @@ namespace CrudOperations
 			{
 				endpoints.MapControllerRoute(
 					name: "default",
-					pattern: "{controller=home}/{action=index}/{id?}");
+					pattern: "{controller=Home}/{action=index}/{id?}");
 			});
 
 			app.Run();

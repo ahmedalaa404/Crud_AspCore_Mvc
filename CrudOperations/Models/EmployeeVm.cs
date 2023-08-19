@@ -27,10 +27,10 @@ namespace CrudOperations.Models
 
 
 		[Required]
-		[RegularExpression(@"^\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$")]
+		[RegularExpression(@"^01[01235]\d{1,8}$")]
 
 
-		public int NumberPhone { get; set; }
+		public string NumberPhone { get; set; }
 
 		public DateTime HireDate { get; set; }
 

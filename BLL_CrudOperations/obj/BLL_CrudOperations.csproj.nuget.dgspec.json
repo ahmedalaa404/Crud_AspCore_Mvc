@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\New folder\\Crude\\BLL_CrudOperations\\BLL_CrudOperations.csproj": {}
+    "C:\\Users\\Yassin\\Desktop\\Crud_AspCore_Mvc\\BLL_CrudOperations\\BLL_CrudOperations.csproj": {}
   },
   "projects": {
-    "D:\\New folder\\Crude\\BLL_CrudOperations\\BLL_CrudOperations.csproj": {
+    "C:\\Users\\Yassin\\Desktop\\Crud_AspCore_Mvc\\BLL_CrudOperations\\BLL_CrudOperations.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\New folder\\Crude\\BLL_CrudOperations\\BLL_CrudOperations.csproj",
+        "projectUniqueName": "C:\\Users\\Yassin\\Desktop\\Crud_AspCore_Mvc\\BLL_CrudOperations\\BLL_CrudOperations.csproj",
         "projectName": "BLL_CrudOperations",
-        "projectPath": "D:\\New folder\\Crude\\BLL_CrudOperations\\BLL_CrudOperations.csproj",
+        "projectPath": "C:\\Users\\Yassin\\Desktop\\Crud_AspCore_Mvc\\BLL_CrudOperations\\BLL_CrudOperations.csproj",
         "packagesPath": "C:\\Users\\Yassin\\.nuget\\packages\\",
-        "outputPath": "D:\\New folder\\Crude\\BLL_CrudOperations\\obj\\",
+        "outputPath": "C:\\Users\\Yassin\\Desktop\\Crud_AspCore_Mvc\\BLL_CrudOperations\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Yassin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\New folder\\Crude\\Dal_CrudOperations\\Dal_CrudOperations.csproj": {
-                "projectPath": "D:\\New folder\\Crude\\Dal_CrudOperations\\Dal_CrudOperations.csproj"
+              "C:\\Users\\Yassin\\Desktop\\Crud_AspCore_Mvc\\Dal_CrudOperations\\Dal_CrudOperations.csproj": {
+                "projectPath": "C:\\Users\\Yassin\\Desktop\\Crud_AspCore_Mvc\\Dal_CrudOperations\\Dal_CrudOperations.csproj"
               }
             }
           }
@@ -63,14 +63,14 @@
         }
       }
     },
-    "D:\\New folder\\Crude\\Dal_CrudOperations\\Dal_CrudOperations.csproj": {
+    "C:\\Users\\Yassin\\Desktop\\Crud_AspCore_Mvc\\Dal_CrudOperations\\Dal_CrudOperations.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\New folder\\Crude\\Dal_CrudOperations\\Dal_CrudOperations.csproj",
+        "projectUniqueName": "C:\\Users\\Yassin\\Desktop\\Crud_AspCore_Mvc\\Dal_CrudOperations\\Dal_CrudOperations.csproj",
         "projectName": "Dal_CrudOperations",
-        "projectPath": "D:\\New folder\\Crude\\Dal_CrudOperations\\Dal_CrudOperations.csproj",
+        "projectPath": "C:\\Users\\Yassin\\Desktop\\Crud_AspCore_Mvc\\Dal_CrudOperations\\Dal_CrudOperations.csproj",
         "packagesPath": "C:\\Users\\Yassin\\.nuget\\packages\\",
-        "outputPath": "D:\\New folder\\Crude\\Dal_CrudOperations\\obj\\",
+        "outputPath": "C:\\Users\\Yassin\\Desktop\\Crud_AspCore_Mvc\\Dal_CrudOperations\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Yassin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -101,7 +101,7 @@
           "dependencies": {
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[5.0.16, )"
+              "version": "[6.0.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
