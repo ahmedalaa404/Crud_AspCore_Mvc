@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\CrudOperations",
+    "\\CrudOperations\\Helper"
   ],
+  "SelectedNode": "\\CrudOperations\\Helper\\DocumentSetting.cs",
   "PreviewInSolutionExplorer": false
 }

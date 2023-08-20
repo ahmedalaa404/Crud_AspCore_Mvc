@@ -67,38 +67,7 @@ namespace CrudOperations
 			Builder.Services.AddTransient<IEmailSettings, EmailSettings>();
 
 
-			//Builder.Services.Configure<TwilioSettings>(Builder.Configuration.GetSection("PhoneSetting"));
-			//Builder.Services.AddTransient<ITwilio, TwilioServices>();
 
-
-
-
-
-			#region AUTH With Google 
-
-			//Builder.Services.AddAuthentication(o =>
-			//{
-			//	o.DefaultAuthenticateScheme = GoogleDefaults.AuthenticationScheme;
-			//	o.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
-			//}).AddGoogle(
-			//			  f =>
-			//			  {
-			//				  IConfiguration GoogleAuthenticate = Builder.Configuration.GetSection("Authentications:Google");
-			//				  f.ClientId = GoogleAuthenticate["ClientId"];
-			//				  f.ClientSecret = GoogleAuthenticate["ClientSecret"];
-			//			  }
-			//	);
-			#endregion
-
-
-
-
-
-			#region Auth Builder.Services
-			//Builder.Services.AddScoped<UserManager<ApplicationsUser>>();
-			//Builder.Services.AddScoped<SignInManager<ApplicationsUser>>();
-			//Builder.Services.AddScoped<RoleManager<IdentityRole>>();
-			#endregion
 
 
 

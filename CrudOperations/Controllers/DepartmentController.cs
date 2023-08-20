@@ -4,7 +4,7 @@ using CrudOperations.Models;
 using Dal_CrudOperations.DomainModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -101,7 +101,7 @@ namespace CrudOperations.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult Delete([FromRoute] int id, DepartmentVM DepartmentVm)
+		public async Task<IActionResult> Delete([FromRoute] int id, DepartmentVM DepartmentVm)
 		{
 			if (id != DepartmentVm.id)
 				return BadRequest(string.Empty);
@@ -109,6 +109,7 @@ namespace CrudOperations.Controllers
 			{
 				var _department = _mapper.Map<DepartmentVM, Department>(DepartmentVm);
 				_uniteOFWork.DepartmentsRepo.Delete(_department);
+				await _uniteOFWork.Complit();
 				return RedirectToAction(nameof(Index));
 			}
 			else
@@ -133,9 +134,21 @@ namespace CrudOperations.Controllers
 				return NotFound(string.Empty);
 			if (ModelState.IsValid)
 			{
-				var department = _mapper.Map<DepartmentVM, Department>(departmentvm);
-				_uniteOFWork.DepartmentsRepo.Update(department);
-				return RedirectToAction(nameof(Index));
+				try
+				{
+					var department = _mapper.Map<DepartmentVM, Department>(departmentvm);
+					_uniteOFWork.DepartmentsRepo.Update(department);
+
+					var count = _uniteOFWork.Complit().Result;
+					if (count >0)
+					{
+						return RedirectToAction(nameof(Index));
+					}
+				}
+				catch (Exception message)
+				{
+					ModelState.AddModelError(string.Empty, message.Message);
+				}
 			}
 			return View(departmentvm);
 

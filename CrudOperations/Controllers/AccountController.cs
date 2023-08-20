@@ -12,15 +12,13 @@ namespace CrudOperations.Controllers
 	{
 		private readonly UserManager<ApplicationsUser> _usermanager; // To sign IN User;
 		private readonly SignInManager<ApplicationsUser> _signManager  /*to make User Create*/;
-		private readonly IEmailSettings _MailManager;
-		private readonly ITwilio _smsServices;
+		private readonly IEmailSettings _Mailmanager;
 
-		public AccountController(UserManager<ApplicationsUser> usermanager, SignInManager<ApplicationsUser> SignManager, IEmailSettings mailmanager, ITwilio SmsServices)
+		public AccountController(UserManager<ApplicationsUser> usermanager, SignInManager<ApplicationsUser> SignManager, IEmailSettings mailmanager)
 		{
 			_usermanager = usermanager;
 			_signManager = SignManager;
-			_MailManager = mailmanager;
-			_smsServices = SmsServices;
+			_Mailmanager = mailmanager;
 		}
 
 		#region Register
@@ -137,10 +135,6 @@ namespace CrudOperations.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-
-
-
-
 				var User = await _usermanager.FindByEmailAsync(Model.Email);
 
 				if (User is not null)
@@ -155,7 +149,7 @@ namespace CrudOperations.Controllers
 						Body = PasswordLink,
 					};
 					//_mailmanager.SendMail(email);
-					_MailManager.SendEmail(email);
+					_Mailmanager.SendEmail(email);
 					return RedirectToAction(nameof(CheckBox));
 				}
 				else
@@ -176,39 +170,39 @@ namespace CrudOperations.Controllers
 
 
 
-		public async Task<IActionResult> SendSMS(ForgetPasswordVM Model)
-		{
-			if (ModelState.IsValid)
-			{
+		//public async Task<IActionResult> SendSMS(ForgetPasswordVM Model)
+		//{
+		//	if (ModelState.IsValid)
+		//	{
 
 
 
 
-				var User = await _usermanager.FindByEmailAsync(Model.Email);
+		//		var User = await _usermanager.FindByEmailAsync(Model.Email);
 
-				if (User is not null)
-				{
-					var TokenResetPassword = await _usermanager.GeneratePasswordResetTokenAsync(User);
-					var PasswordLink = Url.Action("ResetPassword", "account", new { email = Model.Email, token = TokenResetPassword }, Request.Scheme);
+		//		if (User is not null)
+		//		{
+		//			var TokenResetPassword = await _usermanager.GeneratePasswordResetTokenAsync(User);
+		//			var PasswordLink = Url.Action("ResetPassword", "account", new { email = Model.Email, token = TokenResetPassword }, Request.Scheme);
 
-					var sms = new SmsMessage()
-					{
-						Body = PasswordLink,
-						NumberPhone = User.PhoneNumber
-					};
-					_smsServices.send(sms);
+		//			var sms = new SmsMessage()
+		//			{
+		//				Body = PasswordLink,
+		//				NumberPhone = User.PhoneNumber
+		//			};
+		//			_smsServices.send(sms);
 
-					return Ok("Check Phone Number");
-				}
-				else
-				{
-					ModelState.AddModelError(string.Empty, "Email is not Existed");
-					return View("ForgetPassword", Model);
-				}
+		//			return Ok("Check Phone Number");
+		//		}
+		//		else
+		//		{
+		//			ModelState.AddModelError(string.Empty, "Email is not Existed");
+		//			return View("ForgetPassword", Model);
+		//		}
 
-			}
-			return View("ForgetPassword", Model);
-		}
+		//	}
+		//	return View("ForgetPassword", Model);
+		//}
 
 
 

@@ -58,7 +58,7 @@ namespace BLL_CrudOperations.Repos
 
 		public void Update(t Item)
 		{
-			_context.Update(Item);
+			_context.Set<t>().Update(Item);
 		}
 
 

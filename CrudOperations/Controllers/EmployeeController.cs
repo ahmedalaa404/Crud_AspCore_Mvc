@@ -3,6 +3,7 @@ using BLL_CrudOperations.InterFaces;
 using CrudOperations.Helper;
 using CrudOperations.Models;
 using Dal_CrudOperations.DomainModel;
+using Dal_CrudOperations.Migrations;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -134,31 +135,31 @@ namespace CrudOperations.Controllers
 
 		public async Task<IActionResult> Update(int id)
 		{
+			var UserOld=await _uniteOFWork.EmployeeRepo.GetById(id);
+			var ImageName = UserOld.ImageName;
+			TempData["ImageName"] = ImageName;
 			return await Details(id, "Update");
 
 		}
 		[HttpPost]
 		public async Task<IActionResult> Update([FromRoute] int id, EmployeeVm EmployeeVM)
 		{
-			string ImageName;
+	
 			if (id != EmployeeVM.id)
 				return BadRequest(string.Empty);
+
 			if (ModelState.IsValid)
 			{
 				try
 				{
-					var UserOld = await _uniteOFWork.EmployeeRepo.GetById(id);
-					if (EmployeeVM.ImageName != UserOld.ImageName)
-					{
-						DocumentSetting.DeleteFile(UserOld.ImageName, "Image");
-						if(EmployeeVM.ImageName is not null)
-						{
 
-							EmployeeVM .ImageName= await DocumentSetting.UploadFillesAsync(EmployeeVM.Image, "Image");
+					DocumentSetting.DeleteFile(TempData["imageName"] as string, "Image");
 
-						}
-					}
-					
+					EmployeeVM.ImageName= await DocumentSetting.UploadFillesAsync(EmployeeVM.Image, "Image");
+
+
+
+
 					var employee = _mapping.Map<EmployeeVm, Employee>(EmployeeVM);
 					_uniteOFWork.EmployeeRepo.Update(employee);
 					await _uniteOFWork.Complit();

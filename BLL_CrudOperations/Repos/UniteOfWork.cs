@@ -22,8 +22,7 @@ namespace BLL_CrudOperations.Repos
 
 		public void Dispose() => _context.Dispose();
 
-		public async Task<int> Complit() =>
-			await _context.SaveChangesAsync();
+		public async Task<int> Complit() =>await _context.SaveChangesAsync();
 
 	}
 }
